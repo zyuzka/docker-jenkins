@@ -2,7 +2,7 @@
 
 ## Description
 
-Extends official Jenkins image with docker in order to run jobs in containers.
+Extends official Jenkins image with Docker to be able run jobs inside containers.
 
 * Based on: Official `Jenkins 2.60.3` and `Alpine 3.9`
 * Included:
