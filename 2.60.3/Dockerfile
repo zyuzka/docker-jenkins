@@ -2,6 +2,8 @@ FROM jenkins/jenkins:2.60.3-alpine
 
 USER root
 
+ENV JAVA_OPTS='-Djenkins.install.runSetupWizard=false'
+
 RUN apk update && \
     apk add \
     docker \
