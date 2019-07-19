@@ -20,21 +20,61 @@ Extends official Jenkins image with Docker to be able run jobs inside containers
 ## How to use
 
 ### Pull image
+
 ```bash
 $ docker pull spryker/jenkins:2.176
 ```
 
 ### Dockerfile
+
 ```dockerfile
 FROM spryker/jenkins:2.176
 ```
 
 ### docker-compose.yml
+
 ```yaml
 jenkins:
     image: spryker/jenkins:2.176
 ```
 
+## How to run docker container by Jenkins job
+
+### Get proper group ID
+
+- Linux: `export DOCKER_GID=$(ls -n /var/run/docker.sock | awk '{print $4}')`
+- MacOS, Windows: `export DOCKER_GID=0`
+
+### Running with `docker`
+
+`docker run -it --rm --group-add ${DOCKER_GID} -v /var/run/docker.sock:/var/run/docker.sock:ro spryker/jenkins:2.176`
+
+### Running with `docker-compose`
+
+```yaml
+jenkins:
+    image: spryker/jenkins:2.176
+    user: "1000:${DOCKER_GID}"
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock:ro
+```
+
+### Job definition example
+
+```xml
+...
+    <builders>
+        <hudson.tasks.Shell>
+            <command>
+                docker run -i --rm \
+                my-image \
+                command-to-run
+            </command>
+        </hudson.tasks.Shell>
+    </builders>
+...
+```
 
 ## More information
+
 * [Jenkins official images](https://github.com/jenkinsci/docker)
