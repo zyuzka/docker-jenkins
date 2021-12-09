@@ -15,8 +15,10 @@ jobs:
         include:
           - image: '2.176/Dockerfile'
             tags: [ "$ORGANISATION/jenkins:2.176" ]
+            platforms: ['linux/amd64']
           - image: '2.305/Dockerfile'
             tags: [ "$ORGANISATION/jenkins:latest", "$ORGANISATION/jenkins:2.305" ]
+            platforms: ['linux/amd64', 'linux/arm64']
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -37,6 +39,6 @@ jobs:
           push: true
           file: ${{ matrix.image }}
           tags: ${{ join(matrix.tags) }}
-          platforms: linux/amd64,linux/arm64
+          platforms: ${{ join(matrix.platforms) }}
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.GIT_AUTH_TOKEN }}
