@@ -13,7 +13,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          ### docker-jenkins
           - image: '2.176/Dockerfile'
             tags: [ "$ORGA/jenkins:2.176" ]
           - image: '2.305/Dockerfile'
@@ -39,5 +38,5 @@ jobs:
           file: ${{ matrix.image }}
           tags: ${{ join(matrix.tags) }}
           platforms: linux/amd64,linux/arm64
-#          secrets: |
-#            GIT_AUTH_TOKEN=${{ secrets.GIT_AUTH_TOKEN }}
+          secrets: |
+            GIT_AUTH_TOKEN=${{ secrets.GIT_AUTH_TOKEN }}
