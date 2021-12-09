@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build images
-        run: docker buildx build --push . --file ${{ matrix.image }} --tag ${{ join(matrix.tags, ' --tag ') }} --platform ${{ join(matrix.platforms, ',')
+        run: docker buildx build --push . --file ${{ matrix.image }} --tag ${{ join(matrix.tags, ' --tag ') }} --platform ${{ join(matrix.platforms, ',') }}
 
 #      - name: Build and push
 #        id: docker_build
