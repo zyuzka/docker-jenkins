@@ -8,15 +8,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ORGA: 'zyuzka'
+      ORGANISATION: 'zyuzka'
     strategy:
       fail-fast: false
       matrix:
         include:
           - image: '2.176/Dockerfile'
-            tags: [ "$ORGA/jenkins:2.176" ]
+            tags: [ "$ORGANISATION/jenkins:2.176" ]
           - image: '2.305/Dockerfile'
-            tags: [ "$ORGA/jenkins:latest", "$ORGA/jenkins:2.305" ]
+            tags: [ "$ORGANISATION/jenkins:latest", "$ORGANISATION/jenkins:2.305" ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
