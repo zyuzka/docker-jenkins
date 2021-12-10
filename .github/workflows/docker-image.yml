@@ -15,8 +15,11 @@ jobs:
             tags: [ "zyuzka/jenkins:2.176" ]
             platforms: ['linux/amd64']
           - image: '2.305/Dockerfile'
-            tags: [ "zyuzka/jenkins:latest", "zyuzka/jenkins:2.305" ]
+            tags: [ "zyuzka/jenkins:2.305" ]
             platforms: ['linux/amd64', 'linux/arm64']
+          - image: '2.324/Dockerfile'
+            tags: [ "zyuzka/jenkins:latest", "zyuzka/jenkins:2.324" ]
+            platforms: [ 'linux/amd64', 'linux/arm64' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
