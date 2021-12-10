@@ -13,7 +13,7 @@ jobs:
         include:
           - image: '2.176/Dockerfile'
             tags: [ "zyuzka/jenkins:2.176" ]
-            platforms: ['linux/amd64']
+            platforms: ['linux/amd64', 'linux/arm64']
           - image: '2.305/Dockerfile'
             tags: [ "zyuzka/jenkins:2.305" ]
             platforms: ['linux/amd64', 'linux/arm64']
