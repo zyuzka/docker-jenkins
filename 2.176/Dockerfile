@@ -1,12 +1,12 @@
-FROM jenkins/jenkins:2.176.1-alpine
+FROM jenkins/jenkins:2.176.1-jdk11
 
 USER root
 
 ENV JAVA_OPTS='-Djenkins.install.runSetupWizard=false -Xms128m -Xmx128m'
 
-RUN apk update && \
-    apk add \
+RUN apt update && \
+    apt install -y \
     docker \
-    shadow
+    netcat
 
 USER jenkins
