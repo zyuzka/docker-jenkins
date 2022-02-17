@@ -9,4 +9,6 @@ RUN apt update && \
     docker \
     netcat
 
+RUN jenkins-plugin-cli --plugins strictcrumbissuer
+
 USER jenkins
