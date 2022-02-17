@@ -9,6 +9,4 @@ RUN apt update && \
     docker \
     netcat
 
-RUN jenkins-plugin-cli --plugins strict-crumb-issuer:2.1.0
-
 USER jenkins
